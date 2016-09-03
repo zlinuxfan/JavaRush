@@ -3,7 +3,6 @@ package com.javarush.test.level16.lesson10.task01;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Timer;
 
 /* Считаем секунды
 1. Напиши реализацию метода run в нити Stopwatch (секундомер).
@@ -32,14 +31,13 @@ public class Solution {
         public void run() {
             try {
                 //add your code here - добавьте код тут
-                Thread watch = Thread.currentThread();
-
-                seconds = (int)(System.currentTimeMillis() / 1000);
-                while (!watch.isInterrupted()) {
-                    Thread.sleep(0);
+                while (!isInterrupted())
+                {
+                    Thread.sleep(1000);
+                    seconds ++;
                 }
             } catch (InterruptedException e) {
-                System.out.println("-" + (seconds - (int)(System.currentTimeMillis() / 1000)));
+                System.out.println(seconds);
             }
         }
     }
